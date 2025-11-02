@@ -7,13 +7,17 @@ import java.util.Objects;
 import org.hibernate.proxy.HibernateProxy;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.ToString;
 
+@Entity
 @Data
+@Table(name="users")
 public class User {
 
     @Id
