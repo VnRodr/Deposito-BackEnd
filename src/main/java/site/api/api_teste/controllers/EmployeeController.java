@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class EmployeeController {
     public ResponseEntity<Employee> findById(@PathVariable String id) 
     {
         Employee employee = employeeService.findById(id);
-        return ResponseEntity.ok(employee);
+        return ResponseEntity.status(HttpStatus.FOUND).body(employee);
     }
 
     @PostMapping("/create-employee")
@@ -46,12 +47,14 @@ public class EmployeeController {
     }
 
     @PutMapping("/update-employee")
-    public void atualizarEntidade(@RequestBody Employee employee) {
+    public ResponseEntity<HttpStatus> atualizarEntidade(@RequestBody Employee employee) {
         employeeService.changeEntity(employee);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deletarEntidade(@PathVariable String id) {
+    public ResponseEntity<HttpStatus> deletarEntidade(@PathVariable String id) {
         employeeService.deleteEntity(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

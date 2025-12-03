@@ -24,7 +24,7 @@ public class StockGroupController {
 
     @GetMapping("/stockGroups")
     public ResponseEntity<List<StockGroup>> showAllstockGroups() {
-        return ResponseEntity.status(HttpStatus.FOUND).body(stockGroupService.findAll());
+        return ResponseEntity.ok(stockGroupService.findAll());
     }
 
     @GetMapping("/{id}")
@@ -41,12 +41,14 @@ public class StockGroupController {
     }
 
     @PutMapping("/update-stockGroup")
-    public void atualizarEntidade(@RequestBody StockGroup stockGroup) {
+    public ResponseEntity<HttpStatus> atualizarEntidade(@RequestBody StockGroup stockGroup) {
         stockGroupService.changeEntity(stockGroup);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deletarEntidade(@PathVariable String id) {
+    public ResponseEntity<HttpStatus> deletarEntidade(@PathVariable String id) {
         stockGroupService.deleteEntity(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }
