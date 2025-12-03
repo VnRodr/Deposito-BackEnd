@@ -21,11 +21,10 @@ import site.api.api_teste.services.EmployeeService;
 @RequestMapping("/api")
 @RestController
 public class EmployeeController {
-
     @Autowired
     private EmployeeService employeeService;
 
-@GetMapping("/employees")
+    @GetMapping("/employees")
     public ResponseEntity<List<Employee>> showAllemployees() 
     {
         return ResponseEntity.status(HttpStatus.FOUND).body(employeeService.findAll());
