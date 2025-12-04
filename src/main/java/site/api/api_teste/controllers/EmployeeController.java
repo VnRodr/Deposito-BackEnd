@@ -36,7 +36,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/create-employee")
-    public ResponseEntity<Employee> createemployee(@RequestBody Employee employee) {
+    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
         employeeService.saveEntity(employee);
         URI location = URI.create("/api/create-employee" + employee.getId());
         return ResponseEntity.created(location).body(employee);

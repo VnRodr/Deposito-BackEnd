@@ -23,7 +23,7 @@ public class StockGroupController {
     private StockGroupService stockGroupService;
 
     @GetMapping("/stockGroups")
-    public ResponseEntity<List<StockGroup>> showAllstockGroups() {
+    public ResponseEntity<List<StockGroup>> showAllStockGroups() {
         return ResponseEntity.ok(stockGroupService.findAll());
     }
 
@@ -34,7 +34,7 @@ public class StockGroupController {
     }
 
     @PostMapping("/create-stockGroup")
-    public ResponseEntity<StockGroup> createstockGroup(@RequestBody StockGroup stockGroup) {
+    public ResponseEntity<StockGroup> createStockGroup(@RequestBody StockGroup stockGroup) {
         stockGroupService.saveEntity(stockGroup);
         URI location = URI.create("/api/create-stockGroup" + stockGroup.getId());
         return ResponseEntity.created(location).body(stockGroup);
