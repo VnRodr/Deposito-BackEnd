@@ -26,7 +26,7 @@ public class EmployeeService {
     public Employee findById(String id)
     {
         return employeeRepository.findById(id)   
-                .orElseThrow(() -> new ResponseStatusException(HttpsStatusCodes.NotFoundCode() 
+                .orElseThrow(() -> new ResponseStatusException(HttpsStatusCodes.NotFoundStatus() 
                 , "Employee not found"));
     }
 

@@ -4,22 +4,22 @@ import org.springframework.http.HttpStatus;
 
 public class HttpsStatusCodes {
 
-    static public HttpStatus OKCode()
+    static public HttpStatus OKStatus()
     {
         return HttpStatus.OK;
     }
 
-    static public HttpStatus NotFoundCode()
+    static public HttpStatus NotFoundStatus()
     {
         return HttpStatus.NOT_FOUND;
     }
 
-    static public HttpStatus CreatedCode()
+    static public HttpStatus CreatedStatus()
     {
         return HttpStatus.CREATED;
     }
 
-    static public HttpStatus NoContentCode()
+    static public HttpStatus NoContentStatus()
     {
         return HttpStatus.NO_CONTENT;
     }

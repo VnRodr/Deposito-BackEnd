@@ -26,7 +26,7 @@ public class StockGroupService {
     public StockGroup findById(String id) {
         return stockGroupRepository.findById(id)
                 .orElseThrow(
-                        () -> new ResponseStatusException(HttpsStatusCodes.NotFoundCode(),
+                        () -> new ResponseStatusException(HttpsStatusCodes.NotFoundStatus(),
                                 "Stock group not found"));
     }
 
