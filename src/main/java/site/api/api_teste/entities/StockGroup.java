@@ -3,11 +3,13 @@ package site.api.api_teste.entities;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import site.api.api_teste.enums.StockStatus;
 
+@Entity
 public class StockGroup {
 
     @Id
@@ -31,7 +33,6 @@ public class StockGroup {
     
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @Column(nullable = false, name = "stockgroup_responsible")
     private Employee responsible;
 
     public String getId() {
