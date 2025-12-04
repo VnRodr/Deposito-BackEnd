@@ -2,18 +2,36 @@ package site.api.api_teste.entities;
 
 import org.hibernate.annotations.UuidGenerator;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import site.api.api_teste.enums.StockStatus;
 
 public class StockGroup {
 
+    @Id
     @UuidGenerator
     private String id;
 
+    @Column(nullable = false, length = 80, name = "stockgroup_name")
     private String name;
+    
+    @Column(nullable = false, name = "stockgroup_total_items")
     private Integer totalItems;
+    
+    @Column(nullable = false, name = "stockgroup_value")
     private Double value;
+    
+    @Column(nullable = false, name = "stockgroup_low_stock")
     private Integer lowStock;
+    
+    @Column(nullable = false, name = "stockgroup_status")
     private StockStatus status;
+    
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    @Column(nullable = false, name = "stockgroup_responsible")
     private Employee responsible;
 
     public String getId() {

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,21 +25,18 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping("/employees")
-    public ResponseEntity<List<Employee>> showAllemployees() 
-    {
+    public ResponseEntity<List<Employee>> showAllemployees() {
         return ResponseEntity.status(HttpStatus.FOUND).body(employeeService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> findById(@PathVariable String id) 
-    {
+    public ResponseEntity<Employee> findById(@PathVariable String id) {
         Employee employee = employeeService.findById(id);
         return ResponseEntity.status(HttpStatus.FOUND).body(employee);
     }
 
     @PostMapping("/create-employee")
-    public ResponseEntity<Employee> createemployee(@RequestBody Employee employee)
-    {
+    public ResponseEntity<Employee> createemployee(@RequestBody Employee employee) {
         employeeService.saveEntity(employee);
         URI location = URI.create("/api/create-employee" + employee.getId());
         return ResponseEntity.created(location).body(employee);
