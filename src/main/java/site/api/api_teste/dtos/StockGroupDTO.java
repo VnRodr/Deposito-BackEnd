@@ -1,37 +1,33 @@
-package site.api.api_teste.entities;
+package site.api.api_teste.dtos;
 
-import org.hibernate.annotations.UuidGenerator;
+import java.io.Serializable;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Entity;
+import site.api.api_teste.entities.Employee;
 import site.api.api_teste.enums.StockStatus;
 
-public class StockGroup {
+@Entity
+public class StockGroupDTO implements Serializable{
 
-    @Id
-    @UuidGenerator
+
     private String id;
-
-    @Column(nullable = false, length = 80, name = "stockgroup_name")
     private String name;
-
-    @Column(nullable = false, name = "stockgroup_total_items")
     private Integer totalItems;
-
-    @Column(nullable = false, name = "stockgroup_value")
     private Double value;
-
-    @Column(nullable = false, name = "stockgroup_low_stock")
     private Integer lowStock;
-
-    @Column(nullable = false, name = "stockgroup_status")
     private StockStatus status;
-
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
     private Employee responsible;
+
+    public StockGroupDTO(String id, String name, Integer totalItems, Double value, Integer lowStock, StockStatus status,
+            Employee responsible) {
+        this.id = id;
+        this.name = name;
+        this.totalItems = totalItems;
+        this.value = value;
+        this.lowStock = lowStock;
+        this.status = status;
+        this.responsible = responsible;
+    }
 
     public String getId() {
         return id;

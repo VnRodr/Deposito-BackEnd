@@ -1,34 +1,29 @@
-package site.api.api_teste.entities;
+package site.api.api_teste.dtos;
 
+import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.annotations.UuidGenerator;
+import jakarta.persistence.Entity;
+import site.api.api_teste.entities.StockGroup;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-
-public class Employee {
-
-    @Id
-    @UuidGenerator
+@Entity
+public class EmployeeDTO implements Serializable {
     private String id;
-
-    @Column(nullable = false, length = 80, name = "employee_name")
     private String name;
-
-    @Column(nullable = false, length = 80, name = "employee_department")
-    private String  department;
-
-    @Column(nullable = false, length = 80, name = "employee_email")
-    private String  email;
-
-    @Column(nullable = false, length = 20, name = "employee_phone")
-    private String  phone;
-
-    @OneToMany(mappedBy = "responsible")
-    @Column(nullable = true, name = "employee_stockgroups")
+    private String department;
+    private String email;
+    private String phone;
     private List<StockGroup> stockGroups;
+
+    public EmployeeDTO(String id, String name, String department, String email, String phone,
+            List<StockGroup> stockGroups) {
+        this.id = id;
+        this.name = name;
+        this.department = department;
+        this.email = email;
+        this.phone = phone;
+        this.stockGroups = stockGroups;
+    }
 
     public String getId() {
         return id;
@@ -68,6 +63,14 @@ public class Employee {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<StockGroup> getStockGroups() {
+        return stockGroups;
+    }
+
+    public void setStockGroups(List<StockGroup> stockGroups) {
+        this.stockGroups = stockGroups;
     }
 
 }
