@@ -8,6 +8,8 @@ import site.api.api_teste.entities.StockGroup;
 
 @Entity
 public class EmployeeDTO implements Serializable {
+    static final long serialVersionUID = 213145123L;
+
     private String id;
     private String name;
     private String department;

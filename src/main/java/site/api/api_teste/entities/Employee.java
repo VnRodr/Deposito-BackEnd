@@ -11,7 +11,7 @@ import jakarta.persistence.OneToMany;
 public class Employee {
 
     @Id
-    @UuidGenerator
+    @UuidGenerator(style = UuidGenerator.Style.TIME)
     private String id;
 
     @Column(nullable = false, length = 80, name = "employee_name")

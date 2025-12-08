@@ -11,7 +11,7 @@ import site.api.api_teste.enums.StockStatus;
 public class StockGroup {
 
     @Id
-    @UuidGenerator
+    @UuidGenerator(style = UuidGenerator.Style.TIME)
     private String id;
 
     @Column(nullable = false, length = 80, name = "stockgroup_name")

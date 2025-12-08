@@ -8,7 +8,7 @@ import site.api.api_teste.enums.StockStatus;
 
 @Entity
 public class StockGroupDTO implements Serializable{
-
+    static final long serialVersionUID = 0421415334L;
 
     private String id;
     private String name;
