@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import site.api.api_teste.entities.StockGroup;
+import site.api.api_teste.enums.HttpsStatusCodes;
 import site.api.api_teste.services.StockGroupService;
 
 @RestController
@@ -41,14 +41,14 @@ public class StockGroupController {
     }
 
     @PutMapping("/update-stockGroup")
-    public ResponseEntity<HttpStatus> atualizarEntidade(@RequestBody StockGroup stockGroup) {
+    public ResponseEntity<HttpsStatusCodes> atualizarEntidade(@RequestBody StockGroup stockGroup) {
         stockGroupService.changeEntity(stockGroup);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deletarEntidade(@PathVariable String id) {
+    public ResponseEntity<HttpsStatusCodes> deletarEntidade(@PathVariable String id) {
         stockGroupService.deleteEntity(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.ok().build();
     }
 }
