@@ -3,10 +3,8 @@ package site.api.api_teste.dtos;
 import java.io.Serializable;
 import java.util.List;
 
-import jakarta.persistence.Entity;
 import site.api.api_teste.entities.StockGroup;
 
-@Entity
 public class EmployeeDTO implements Serializable {
     static final long serialVersionUID = 213145123L;
 

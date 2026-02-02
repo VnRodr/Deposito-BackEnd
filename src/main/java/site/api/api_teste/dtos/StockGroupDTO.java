@@ -2,11 +2,9 @@ package site.api.api_teste.dtos;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Entity;
 import site.api.api_teste.entities.Employee;
 import site.api.api_teste.enums.StockStatus;
 
-@Entity
 public class StockGroupDTO implements Serializable{
     static final long serialVersionUID = 0421415334L;
 

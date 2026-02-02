@@ -5,12 +5,18 @@ import java.util.List;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "employees")
 public class Employee {
 
     @Id
+    @GeneratedValue
     @UuidGenerator(style = UuidGenerator.Style.TIME)
     private String id;
 
@@ -27,7 +33,6 @@ public class Employee {
     private String  phone;
 
     @OneToMany(mappedBy = "responsible")
-    @Column(nullable = true, name = "employee_stockgroups")
     private List<StockGroup> stockGroups;
 
     public String getId() {

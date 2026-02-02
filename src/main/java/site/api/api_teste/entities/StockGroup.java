@@ -3,14 +3,22 @@ package site.api.api_teste.entities;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import site.api.api_teste.enums.StockStatus;
 
+@Entity
+@Table(name = "stock_groups")
 public class StockGroup {
 
     @Id
+    @GeneratedValue
     @UuidGenerator(style = UuidGenerator.Style.TIME)
     private String id;
 
@@ -26,6 +34,7 @@ public class StockGroup {
     @Column(nullable = false, name = "stockgroup_low_stock")
     private Integer lowStock;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "stockgroup_status")
     private StockStatus status;
 
