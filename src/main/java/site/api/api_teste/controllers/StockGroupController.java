@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import site.api.api_teste.entities.StockGroup;
 import site.api.api_teste.enums.HttpsStatusCodes;
 import site.api.api_teste.services.StockGroupService;
 
 @RestController
+@RequestMapping("/api")
 public class StockGroupController {
   @Autowired private StockGroupService stockGroupService;
 
@@ -24,7 +26,7 @@ public class StockGroupController {
     return ResponseEntity.ok(stockGroupService.findAll());
   }
 
-  @GetMapping("/stockGroup/{id}")
+  @GetMapping("/stockGroups/{id}")
   public ResponseEntity<StockGroup> findById(@PathVariable String id) {
     StockGroup stockGroup = stockGroupService.findById(id);
     return ResponseEntity.ok(stockGroup);
@@ -43,7 +45,7 @@ public class StockGroupController {
     return ResponseEntity.ok().build();
   }
 
-  @DeleteMapping("/delete/{id}")
+  @DeleteMapping("/delete/stockGroups/{id}")
   public ResponseEntity<HttpsStatusCodes> deletarEntidade(@PathVariable String id) {
     stockGroupService.deleteEntity(id);
     return ResponseEntity.ok().build();

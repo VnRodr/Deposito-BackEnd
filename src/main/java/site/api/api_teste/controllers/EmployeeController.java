@@ -26,7 +26,7 @@ public class EmployeeController {
     return ResponseEntity.ok(employeeService.findAll());
   }
 
-  @GetMapping("/employee/{id}")
+  @GetMapping("/employees/{id}")
   public ResponseEntity<Employee> findById(@PathVariable String id) {
     Employee employee = employeeService.findById(id);
     return ResponseEntity.ok(employee);
@@ -45,7 +45,7 @@ public class EmployeeController {
     return ResponseEntity.ok().build();
   }
 
-  @DeleteMapping("/delete/{id}")
+  @DeleteMapping("/delete/employees/{id}")
   public ResponseEntity<HttpsStatusCodes> deletarEntidade(@PathVariable String id) {
     employeeService.deleteEntity(id);
     return ResponseEntity.ok().build();
