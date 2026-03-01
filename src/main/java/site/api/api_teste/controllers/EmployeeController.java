@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import site.api.api_teste.entities.Employee;
+import site.api.api_teste.dtos.EmployeeDTO;
 import site.api.api_teste.enums.HttpsStatusCodes;
 import site.api.api_teste.services.EmployeeService;
 
@@ -22,25 +22,25 @@ public class EmployeeController {
   @Autowired private EmployeeService employeeService;
 
   @GetMapping("/employees")
-  public ResponseEntity<List<Employee>> showAllemployees() {
+  public ResponseEntity<List<EmployeeDTO>> showAllemployees() {
     return ResponseEntity.ok(employeeService.findAll());
   }
 
   @GetMapping("/employees/{id}")
-  public ResponseEntity<Employee> findById(@PathVariable String id) {
-    Employee employee = employeeService.findById(id);
+  public ResponseEntity<EmployeeDTO> findById(@PathVariable String id) {
+    EmployeeDTO employee = employeeService.findById(id);
     return ResponseEntity.ok(employee);
   }
 
   @PostMapping("/create-employee")
-  public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
-    employeeService.saveEntity(employee);
-    URI location = URI.create("/api/create-employee" + employee.getId());
-    return ResponseEntity.created(location).body(employee);
+  public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employee) {
+    EmployeeDTO savedEmployee = employeeService.saveEntity(employee);
+    URI location = URI.create("/api/create-employee" + savedEmployee.getId());
+    return ResponseEntity.created(location).body(savedEmployee);
   }
 
   @PutMapping("/update-employee")
-  public ResponseEntity<HttpsStatusCodes> atualizarEntidade(@RequestBody Employee employee) {
+  public ResponseEntity<HttpsStatusCodes> atualizarEntidade(@RequestBody EmployeeDTO employee) {
     employeeService.changeEntity(employee);
     return ResponseEntity.ok().build();
   }

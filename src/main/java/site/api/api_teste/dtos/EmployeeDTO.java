@@ -15,6 +15,9 @@ public class EmployeeDTO implements Serializable {
     private String phone;
     private List<StockGroup> stockGroups;
 
+    public EmployeeDTO() {
+    }
+
     public EmployeeDTO(String id, String name, String department, String email, String phone,
             List<StockGroup> stockGroups) {
         this.id = id;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import site.api.api_teste.entities.StockGroup;
+import site.api.api_teste.dtos.StockGroupDTO;
 import site.api.api_teste.enums.HttpsStatusCodes;
 import site.api.api_teste.services.StockGroupService;
 
@@ -22,25 +22,25 @@ public class StockGroupController {
   @Autowired private StockGroupService stockGroupService;
 
   @GetMapping("/stockGroups")
-  public ResponseEntity<List<StockGroup>> showAllStockGroups() {
+  public ResponseEntity<List<StockGroupDTO>> showAllStockGroups() {
     return ResponseEntity.ok(stockGroupService.findAll());
   }
 
   @GetMapping("/stockGroups/{id}")
-  public ResponseEntity<StockGroup> findById(@PathVariable String id) {
-    StockGroup stockGroup = stockGroupService.findById(id);
+  public ResponseEntity<StockGroupDTO> findById(@PathVariable String id) {
+    StockGroupDTO stockGroup = stockGroupService.findById(id);
     return ResponseEntity.ok(stockGroup);
   }
 
   @PostMapping("/create-stockGroup")
-  public ResponseEntity<StockGroup> createStockGroup(@RequestBody StockGroup stockGroup) {
-    stockGroupService.saveEntity(stockGroup);
-    URI location = URI.create("/api/create-stockGroup" + stockGroup.getId());
-    return ResponseEntity.created(location).body(stockGroup);
+  public ResponseEntity<StockGroupDTO> createStockGroup(@RequestBody StockGroupDTO stockGroup) {
+    StockGroupDTO savedStockGroup = stockGroupService.saveEntity(stockGroup);
+    URI location = URI.create("/api/create-stockGroup" + savedStockGroup.getId());
+    return ResponseEntity.created(location).body(savedStockGroup);
   }
 
   @PutMapping("/update-stockGroup")
-  public ResponseEntity<HttpsStatusCodes> atualizarEntidade(@RequestBody StockGroup stockGroup) {
+  public ResponseEntity<HttpsStatusCodes> atualizarEntidade(@RequestBody StockGroupDTO stockGroup) {
     stockGroupService.changeEntity(stockGroup);
     return ResponseEntity.ok().build();
   }

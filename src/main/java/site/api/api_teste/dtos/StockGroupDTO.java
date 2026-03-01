@@ -16,6 +16,9 @@ public class StockGroupDTO implements Serializable{
     private StockStatus status;
     private Employee responsible;
 
+    public StockGroupDTO() {
+    }
+
     public StockGroupDTO(String id, String name, Integer totalItems, Double value, Integer lowStock, StockStatus status,
             Employee responsible) {
         this.id = id;
