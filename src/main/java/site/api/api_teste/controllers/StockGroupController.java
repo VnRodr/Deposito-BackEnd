@@ -35,7 +35,7 @@ public class StockGroupController {
   @PostMapping("/create-stockGroup")
   public ResponseEntity<StockGroupDTO> createStockGroup(@RequestBody StockGroupDTO stockGroup) {
     StockGroupDTO savedStockGroup = stockGroupService.saveEntity(stockGroup);
-    URI location = URI.create("/api/create-stockGroup" + savedStockGroup.getId());
+    URI location = URI.create("/api/create-stockGroup/" + savedStockGroup.getId());
     return ResponseEntity.created(location).body(savedStockGroup);
   }
 

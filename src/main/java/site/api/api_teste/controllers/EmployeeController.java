@@ -35,7 +35,7 @@ public class EmployeeController {
   @PostMapping("/create-employee")
   public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employee) {
     EmployeeDTO savedEmployee = employeeService.saveEntity(employee);
-    URI location = URI.create("/api/create-employee" + savedEmployee.getId());
+    URI location = URI.create("/api/create-employee/" + savedEmployee.getId());
     return ResponseEntity.created(location).body(savedEmployee);
   }
 
