@@ -1,6 +1,8 @@
 package site.api.api_teste.enums;
 
 public enum StockStatus {
-  good,
-  warning
+  GOOD,
+  WARNING,
+  NORMAL,
+  LOW
 }
