@@ -16,9 +16,6 @@ public class Item {
   @UuidGenerator(style = UuidGenerator.Style.TIME)
   private String id;
 
-  @Column(nullable = false, length = 50, name = "item_sku")
-  private String SKU;
-
   @Column(nullable = false, length = 80, name = "item_name")
   private String name;
 
@@ -29,7 +26,7 @@ public class Item {
   private Integer quantity;
 
   @Column(nullable = false, name = "item_unit_value")
-  private Boolean unitValue;
+  private Double unitValue;
 
   @Column(nullable = false, name = "item_low_quantity")
   private Integer lowQuantity;
@@ -40,14 +37,6 @@ public class Item {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  public String getSKU() {
-    return SKU;
-  }
-
-  public void setSKU(String sKU) {
-    SKU = sKU;
   }
 
   public String getName() {
@@ -74,11 +63,11 @@ public class Item {
     this.quantity = quantity;
   }
 
-  public Boolean getUnitValue() {
+  public Double getUnitValue() {
     return unitValue;
   }
 
-  public void setUnitValue(Boolean unitValue) {
+  public void setUnitValue(Double unitValue) {
     this.unitValue = unitValue;
   }
 
