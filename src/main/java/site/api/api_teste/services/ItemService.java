@@ -56,8 +56,16 @@ public class ItemService {
   }
 
   @Transactional
-  public void deleteEntity(String id) {
-    itemRepository.deleteById(id);
+  public void deleteEntityByName(String itemName) {
+    Item item =
+        itemRepository
+            .findItemByName(itemName)
+            .orElseThrow(
+                () ->
+                    new ResponseStatusException(
+                        HttpsStatusCodes.NotFoundStatus(), "Item not found"));
+
+    itemRepository.deleteById(item);
   }
 
   private ItemDTO toDTO(Item entity) {
